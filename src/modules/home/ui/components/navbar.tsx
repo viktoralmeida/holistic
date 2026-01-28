@@ -31,16 +31,16 @@ interface NavbarItemProps {
 
 // Responsive text sizing for navigation buttons
 const getButtonTextSize = (windowWidth: number) => {
-    if (windowWidth >= 768 && windowWidth < 1000) return "text-sm";
-    if (windowWidth >= 1024 && windowWidth < 1430) return "text-sm";
-    if (windowWidth >= 1430) return "text-sm"; // Slightly bigger text for desktop screens
-    return "text-xs sm:text-sm";
+    if (windowWidth >= 768 && windowWidth < 1000) return "text-md";
+    if (windowWidth >= 1024 && windowWidth < 1430) return "text-md";
+    if (windowWidth >= 1430) return "text-md"; // Slightly bigger text for desktop screens
+    return "text-xs sm:text-md";
 };
 
 // Responsive padding for navigation buttons
 const getButtonPadding = (windowWidth: number) => {
-    if (windowWidth >= 1024) return "px-2 py-1.5"; // Smaller padding for desktop
-    return "px-3 sm:px-4 lg:px-5 py-1.5 sm:py-2";
+    if (windowWidth >= 1024) return "px-3 py-4"; // Smaller padding for desktop
+    return "px-2.5 sm:px-3 lg:px-5 py-4 sm:py-4";
 };
 
 const NavbarItem = ({
@@ -76,7 +76,7 @@ const NavbarItem = ({
 }
 
 const navbarItems = [
-    { href: "/about", children: "SALON W WARSZAWIE" },
+     
     { href: "/contact", children: "KONTAKT" },
 ];
 
@@ -115,13 +115,13 @@ export const Navbar = () => {
     // Responsive logo sizing
     const getLogoSize = () => {
         if (windowWidth < 480) return { width: 'w-20', textMain: 'text-base', textSub: 'text-xs' };
-        if (windowWidth < 640) return { width: 'w-24', textMain: 'text-lg', textSub: 'text-sm' };
-        if (windowWidth < 768) return { width: 'w-28', textMain: 'text-lg', textSub: 'text-sm' };
+        if (windowWidth < 640) return { width: 'w-24', textMain: 'text-lg', textSub: 'text-md' };
+        if (windowWidth < 768) return { width: 'w-28', textMain: 'text-lg', textSub: 'text-md' };
         if (windowWidth < 1000) return { width: 'w-32', textMain: 'text-2xl', textSub: 'text-base' };
         if (windowWidth < 1024) return { width: 'w-36', textMain: 'text-2xl', textSub: 'text-base' };
         if (windowWidth < 1280) return { width: 'w-40', textMain: 'text-2xl', textSub: 'text-base' };
         if (windowWidth <= 1430) return { width: 'w-32', textMain: 'text-lg', textSub: 'text-xs' }; // Smaller container and text for 1430px and below
-        if (windowWidth <= 1440) return { width: 'w-36', textMain: 'text-xl', textSub: 'text-sm' }; // Smaller container for 1440px
+        if (windowWidth <= 1440) return { width: 'w-36', textMain: 'text-xl', textSub: 'text-md' }; // Smaller container for 1440px
         return { width: 'w-44', textMain: 'text-2xl', textSub: 'text-base' }; // Default for larger screens
     };
 
@@ -184,11 +184,11 @@ export const Navbar = () => {
                                     GŁÓWNA
                                 </NavbarItem>
                                 
-                                {/* WDROŻENIE HEAD SPA Dropdown 
+                                {/* URZĄDZENIA I SZKOLENIA HEAD SPA Dropdown 
                                 <NavbarDropdown 
                                     isActive={pathname.startsWith('/products') || pathname.startsWith('/beds-and-washers') || pathname.startsWith('/personal-training') || pathname.startsWith('/investment-pack')}
                                 >
-                                    WDROŻENIE HEAD SPA
+                                    URZĄDZENIA I SZKOLENIA HEAD SPA
                                 </NavbarDropdown>
                                 */}
 
@@ -196,7 +196,7 @@ export const Navbar = () => {
                                     href="/products"
                                     isActive={pathname === "/products"}
                                 >
-                                     WDROŻENIE HEAD SPA
+                                     URZĄDZENIA I SZKOLENIA HEAD SPA
                                 </NavbarItem>
                 
                                 {/* Other navigation items */}
@@ -249,7 +249,7 @@ export const Navbar = () => {
                                     <Button
                                         asChild
                                         variant="outline"
-                                        className="relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm xl:text-base font-semibold disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border py-2 xl:py-3 has-[>svg]:px-3 xl:has-[>svg]:px-4 h-12 xl:h-14 px-4 xl:px-6 rounded-md xl:rounded-md !bg-gradient-to-r !from-accent/90 !to-accent/80 !text-accent-foreground !border-[#b19681] backdrop-blur-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[4px] hover:-translate-y-[2px]"
+                                        className="relative inline-flex items-center justify-center gap-2 whitespace-nowrap text-md xl:text-base font-semibold disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border py-2 xl:py-3 has-[>svg]:px-3 xl:has-[>svg]:px-4 h-12 xl:h-14 px-4 xl:px-6 rounded-md xl:rounded-md !bg-gradient-to-r !from-accent/90 !to-accent/80 !text-accent-foreground !border-[#b19681] backdrop-blur-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-x-[4px] hover:-translate-y-[2px]"
                                     >
                                         <Link href="/Panel">
                                             <div className="relative z-10">Panel</div>
@@ -332,7 +332,7 @@ export const Navbar = () => {
                                 <div className="relative">
                                     <SearchIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 text-primary-foreground/70"/>
                                     <Input 
-                                        className="pl-11 pr-12 py-3 h-12 !bg-gradient-to-r !from-primary/90 !to-primary/80 !text-primary-foreground !border-[#b19681] rounded-md focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-200 placeholder:text-primary-foreground/70 text-sm font-medium" 
+                                        className="pl-11 pr-12 py-3 h-12 !bg-gradient-to-r !from-primary/90 !to-primary/80 !text-primary-foreground !border-[#b19681] rounded-md focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all duration-200 placeholder:text-primary-foreground/70 text-md font-medium" 
                                         placeholder="Szukaj produktów..."
                                         value={searchQuery}
                                         onChange={(e) => {
@@ -389,25 +389,25 @@ export const Navbar = () => {
                                 <NavbarItem
                                     href="/"
                                     isActive={pathname === "/"}
-                                    className={windowWidth >= 768 && windowWidth < 1000 ? "text-xs" : "text-sm"}
+                                    className={windowWidth >= 768 && windowWidth < 1000 ? "text-md" : "text-md"}
                                 >
                                     GŁÓWNA
                                 </NavbarItem>
                                 
-                                {/* WDROŻENIE HEAD SPA Dropdown */}
+                                {/* URZĄDZENIA I SZKOLENIA HEAD SPA Dropdown */}
                                 <ClientOnly fallback={
                                     <NavbarItem
                                         href="/products"
                                         isActive={pathname.startsWith('/products') || pathname.startsWith('/beds-and-washers') || pathname.startsWith('/online-training') || pathname.startsWith('/personal-training') || pathname.startsWith('/investment-pack')}
-                                        className={windowWidth >= 768 && windowWidth < 1000 ? "text-xs" : "text-sm"}
+                                        className={windowWidth >= 768 && windowWidth < 1000 ? "text-md" : "text-md"}
                                     >
-                                        WDROŻENIE HEAD SPA
+                                        URZĄDZENIA I SZKOLENIA HEAD SPA
                                     </NavbarItem>
                                 }>
                                     <NavbarDropdown 
                                         isActive={pathname.startsWith('/products') || pathname.startsWith('/beds-and-washers') || pathname.startsWith('/online-training') || pathname.startsWith('/personal-training') || pathname.startsWith('/investment-pack')}
                                     >
-                                        WDROŻENIE HEAD SPA
+                                        URZĄDZENIA I SZKOLENIA HEAD SPA
                                     </NavbarDropdown>
                                 </ClientOnly>
                                 
@@ -417,7 +417,7 @@ export const Navbar = () => {
                                         key={item.href}
                                         href={item.href}
                                         isActive={pathname === item.href}
-                                        className={windowWidth >= 768 && windowWidth < 1000 ? "text-xs" : "text-sm"}
+                                        className={windowWidth >= 768 && windowWidth < 1000 ? "text-md" : "text-md"}
                                     >
                                         {item.children}
                                     </NavbarItem>

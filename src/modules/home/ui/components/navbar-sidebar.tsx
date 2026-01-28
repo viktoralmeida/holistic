@@ -73,7 +73,7 @@ export const NavbarSidebar = ({
                             </span>
                         </Link>
 
-                        {/* WDROŻENIE HEAD SPA Dropdown */}
+                        {/* Urządzenia i szkolenia HEAD SPA Dropdown */}
                         <div className="space-y-1">
                             <div className="relative">
                                 <Link
@@ -90,7 +90,7 @@ export const NavbarSidebar = ({
                                     <div className="flex items-center gap-3">
                                         <ShoppingCart className="h-5 w-5  text-primary-foreground" />
                                         <span className="font-semibold  text-primary-foreground">
-                                            WDROŻENIE HEAD SPA
+                                            Urządzenia i szkolenia HEAD SPA
                                         </span>
                                     </div>
                                     <button
@@ -155,22 +155,7 @@ export const NavbarSidebar = ({
                             </div>
                         </div>
 
-                        {/* SZKOLENIA ONLINE - Separate button */}
-                        <Link
-                            href="/online-training"
-                            className={cn(
-                                "w-full flex items-center gap-3 p-4 rounded-md transition-all duration-200 group",
-                                "bg-gradient-to-r from-primary/90 to-primary/80 text-primary-foreground border border-primary/20 backdrop-blur-sm",
-                                "hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[4px] -translate-y-[2px] hover:-translate-x-[4px] hover:-translate-y-[2px]",
-                                pathname === "/online-training" && "bg-gradient-to-r from-accent/90 to-accent/80 text-accent-foreground border border-accent/20 backdrop-blur-sm shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[4px] -translate-y-[2px]"
-                            )}
-                            onClick={() => onOpenChange(false)}
-                        >
-                            <User className="h-5 w-5  text-primary-foreground" />
-                            <span className="font-semibold  text-primary-foreground">
-                                SZKOLENIA ONLINE
-                            </span>
-                        </Link>
+            
 
                         {/* Other navigation items */}
                         {items.map((item) => (

@@ -1,0 +1,1001 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --background: oklch(0.9529 0.0146 102.4597);
+  --foreground: oklch(0.4063 0.0255 40.3627);
+  --card: oklch(0.9529 0.0146 102.4597);
+  --card-foreground: oklch(0.4063 0.0255 40.3627);
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.4063 0.0255 40.3627);
+  --primary: oklch(0.6083 0.0623 44.3588);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.7473 0.0387 80.5476);
+  --secondary-foreground: oklch(1.0000 0 0);
+  --muted: oklch(0.8502 0.0389 49.0874);
+  --muted-foreground: oklch(0.5416 0.0512 37.2132);
+  --accent: oklch(0.8502 0.0389 49.0874);
+  --accent-foreground: oklch(0.4063 0.0255 40.3627);
+  --destructive: oklch(0.2225 0.0098 52.9636);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.7473 0.0387 80.5476);
+  --input: oklch(0.7473 0.0387 80.5476);
+  --ring: oklch(0.6083 0.0623 44.3588);
+  --chart-1: oklch(0.6083 0.0623 44.3588);
+  --chart-2: oklch(0.5416 0.0512 37.2132);
+  --chart-3: oklch(0.7272 0.0539 52.3320);
+  --chart-4: oklch(0.7473 0.0387 80.5476);
+  --chart-5: oklch(0.6440 0.0405 52.3917);
+  --sidebar: oklch(0.8903 0.0278 49.5658);
+  --sidebar-foreground: oklch(0.4063 0.0255 40.3627);
+  --sidebar-primary: oklch(0.6083 0.0623 44.3588);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.7272 0.0539 52.3320);
+  --sidebar-accent-foreground: oklch(1.0000 0 0);
+  --sidebar-border: oklch(0.6440 0.0405 52.3917);
+  --sidebar-ring: oklch(0.6083 0.0623 44.3588);
+  --font-sans: DM Sans, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 2px 2px 0px 0px hsl(20 18% 51% / 0.06);
+  --shadow-xs: 2px 2px 0px 0px hsl(20 18% 51% / 0.06);
+  --shadow-sm: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 1px 2px -1px hsl(20 18% 51% / 0.11);
+  --shadow: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 1px 2px -1px hsl(20 18% 51% / 0.11);
+  --shadow-md: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 2px 4px -1px hsl(20 18% 51% / 0.11);
+  --shadow-lg: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 4px 6px -1px hsl(20 18% 51% / 0.11);
+  --shadow-xl: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 8px 10px -1px hsl(20 18% 51% / 0.11);
+  --shadow-2xl: 2px 2px 0px 0px hsl(20 18% 51% / 0.28);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: oklch(0.2721 0.0141 48.1783);
+  --foreground: oklch(0.9529 0.0146 102.4597);
+  --card: oklch(0.3291 0.0156 50.8936);
+  --card-foreground: oklch(0.9529 0.0146 102.4597);
+  --popover: oklch(0.3291 0.0156 50.8936);
+  --popover-foreground: oklch(0.9529 0.0146 102.4597);
+  --primary: oklch(0.7272 0.0539 52.3320);
+  --primary-foreground: oklch(0.2721 0.0141 48.1783);
+  --secondary: oklch(0.5416 0.0512 37.2132);
+  --secondary-foreground: oklch(0.9529 0.0146 102.4597);
+  --muted: oklch(0.4063 0.0255 40.3627);
+  --muted-foreground: oklch(0.7575 0.0380 50.8610);
+  --accent: oklch(0.7473 0.0387 80.5476);
+  --accent-foreground: oklch(0.2721 0.0141 48.1783);
+  --destructive: oklch(0.6875 0.1420 21.4566);
+  --destructive-foreground: oklch(0.2721 0.0141 48.1783);
+  --border: oklch(0.4063 0.0255 40.3627);
+  --input: oklch(0.4063 0.0255 40.3627);
+  --ring: oklch(0.7272 0.0539 52.3320);
+  --chart-1: oklch(0.7272 0.0539 52.3320);
+  --chart-2: oklch(0.7473 0.0387 80.5476);
+  --chart-3: oklch(0.6083 0.0623 44.3588);
+  --chart-4: oklch(0.5416 0.0512 37.2132);
+  --chart-5: oklch(0.6440 0.0405 52.3917);
+  --sidebar: oklch(0.2225 0.0098 52.9636);
+  --sidebar-foreground: oklch(0.9529 0.0146 102.4597);
+  --sidebar-primary: oklch(0.7272 0.0539 52.3320);
+  --sidebar-primary-foreground: oklch(0.2225 0.0098 52.9636);
+  --sidebar-accent: oklch(0.7473 0.0387 80.5476);
+  --sidebar-accent-foreground: oklch(0.2225 0.0098 52.9636);
+  --sidebar-border: oklch(0.4063 0.0255 40.3627);
+  --sidebar-ring: oklch(0.7272 0.0539 52.3320);
+  --font-sans: DM Sans, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+  --radius: 0.5rem;
+  --shadow-2xs: 2px 2px 0px 0px hsl(20 18% 30% / 0.06);
+  --shadow-xs: 2px 2px 0px 0px hsl(20 18% 30% / 0.06);
+  --shadow-sm: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 1px 2px -1px hsl(20 18% 30% / 0.11);
+  --shadow: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 1px 2px -1px hsl(20 18% 30% / 0.11);
+  --shadow-md: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 2px 4px -1px hsl(20 18% 30% / 0.11);
+  --shadow-lg: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 4px 6px -1px hsl(20 18% 30% / 0.11);
+  --shadow-xl: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 8px 10px -1px hsl(20 18% 30% / 0.11);
+  --shadow-2xl: 2px 2px 0px 0px hsl(20 18% 30% / 0.28);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+}
+
+@layer base {
+  * {
+    @apply border-gray-200 outline-gray-300;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom background utilities for better performance */
+@layer utilities {
+  .bg-hero {
+    background: var(--bg-hero);
+  }
+  
+  .bg-section {
+    background: var(--bg-section);
+  }
+  
+  .bg-alternate {
+    background: var(--bg-alternate);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--bg-gradient);
+  }
+  
+  /* Optimized background patterns */
+  .bg-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, var(--primary) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, var(--accent) 0%, transparent 50%);
+    background-size: 100px 100px, 150px 150px;
+    background-position: 0 0, 50px 50px;
+    background-repeat: no-repeat;
+  }
+  
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+  }
+  
+  /* Hide scrollbar for webkit browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+
+  /* Simple Page Loader Styles */
+  .simple-line-loader {
+    position: relative;
+    width: 60px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .simple-line {
+    width: 3px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 1px;
+    opacity: 0.3;
+  }
+
+  .simple-line-1 {
+    animation: simple-line-pulse 1.5s ease-in-out infinite;
+  }
+
+  .simple-line-2 {
+    animation: simple-line-pulse 1.5s ease-in-out infinite 0.2s;
+  }
+
+  .simple-line-3 {
+    animation: simple-line-pulse 1.5s ease-in-out infinite 0.4s;
+  }
+
+  /* Simple animations */
+  @keyframes simple-line-pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scaleY(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scaleY(1.5);
+    }
+  }
+
+  /* Dark mode adjustments */
+  .dark .simple-line {
+    background: var(--primary);
+    opacity: 0.4;
+  }
+
+  /* Vintage Luxury Premium Page Loader Styles */
+  .luxury-page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+      radial-gradient(circle at 20% 80%, var(--primary) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, var(--accent) 0%, transparent 50%),
+      var(--bg-hero);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(25px) saturate(1.2);
+    -webkit-backdrop-filter: blur(25px) saturate(1.2);
+    overflow: hidden;
+  }
+
+  /* Vintage decorative border */
+  .luxury-page-loader::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    opacity: 0.3;
+    animation: vintage-border-pulse 4s ease-in-out infinite;
+  }
+
+  .luxury-page-loader::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    opacity: 0.2;
+    animation: vintage-border-pulse 4s ease-in-out infinite 1s;
+  }
+
+  .luxury-loader-container {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Vintage ornate frame */
+  .luxury-ornate-frame {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 3px solid transparent;
+    border-image: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary)) 1;
+    border-radius: 50%;
+    animation: vintage-frame-rotate 8s linear infinite;
+    opacity: 0.4;
+  }
+
+  .luxury-ornate-frame::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  .luxury-ornate-frame::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  /* Vintage ornate outer ring with decorative elements */
+  .luxury-ring-outer {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary);
+    border-right: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: vintage-spin 4s linear infinite;
+    opacity: 0.9;
+    box-shadow: 
+      0 0 20px var(--primary),
+      inset 0 0 20px var(--primary);
+  }
+
+  .luxury-ring-outer::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid var(--primary);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: vintage-spin 4s linear infinite reverse;
+  }
+
+  /* Vintage middle ring with ornate pattern */
+  .luxury-ring-middle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid transparent;
+    border-bottom: 2px solid var(--accent);
+    border-left: 2px solid var(--accent);
+    border-radius: 50%;
+    animation: vintage-spin-reverse 3.5s linear infinite;
+    opacity: 0.8;
+    box-shadow: 
+      0 0 15px var(--accent),
+      inset 0 0 15px var(--accent);
+  }
+
+  .luxury-ring-middle::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: vintage-spin-reverse 3.5s linear infinite reverse;
+  }
+
+  /* Vintage inner ring with delicate details */
+  .luxury-ring-inner {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--secondary);
+    border-radius: 50%;
+    animation: vintage-spin 3s linear infinite;
+    opacity: 0.7;
+    box-shadow: 
+      0 0 10px var(--secondary),
+      inset 0 0 10px var(--secondary);
+  }
+
+  .luxury-ring-inner::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid var(--secondary);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: vintage-spin 3s linear infinite reverse;
+  }
+
+  /* Vintage central gem with ornate glow */
+  .luxury-center-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: 
+      radial-gradient(circle at 30% 30%, var(--primary-foreground), var(--primary)),
+      var(--primary);
+    border-radius: 50%;
+    animation: vintage-gem-pulse 3s ease-in-out infinite;
+    box-shadow: 
+      0 0 25px var(--primary),
+      0 0 50px var(--primary),
+      inset 0 0 10px var(--primary-foreground);
+    border: 1px solid var(--primary-foreground);
+  }
+
+  .luxury-center-dot::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-foreground);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: vintage-gem-sparkle 2s ease-in-out infinite;
+  }
+
+  /* Vintage floating crystals */
+  .luxury-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: 
+      linear-gradient(45deg, var(--accent), var(--primary-foreground)),
+      var(--accent);
+    border-radius: 50%;
+    opacity: 0.7;
+    box-shadow: 
+      0 0 8px var(--accent),
+      inset 0 0 4px var(--primary-foreground);
+    border: 0.5px solid var(--primary-foreground);
+  }
+
+  .luxury-particle::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 1px;
+    height: 1px;
+    background: var(--primary-foreground);
+    border-radius: 50%;
+    opacity: 0.9;
+  }
+
+  .luxury-particle-1 {
+    top: 15%;
+    left: 10%;
+    animation: vintage-crystal-float-1 5s ease-in-out infinite;
+  }
+
+  .luxury-particle-2 {
+    top: 25%;
+    right: 15%;
+    animation: vintage-crystal-float-2 4.5s ease-in-out infinite;
+  }
+
+  .luxury-particle-3 {
+    bottom: 20%;
+    left: 20%;
+    animation: vintage-crystal-float-3 5.5s ease-in-out infinite;
+  }
+
+  .luxury-particle-4 {
+    bottom: 15%;
+    right: 10%;
+    animation: vintage-crystal-float-4 4.8s ease-in-out infinite;
+  }
+
+  .luxury-particle-5 {
+    top: 50%;
+    left: 5%;
+    animation: vintage-crystal-float-5 6s ease-in-out infinite;
+  }
+
+  .luxury-particle-6 {
+    top: 50%;
+    right: 5%;
+    animation: vintage-crystal-float-6 5.2s ease-in-out infinite;
+  }
+
+  /* Vintage decorative corner elements */
+  .luxury-corner-ornament {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+    opacity: 0.3;
+    animation: vintage-corner-pulse 3s ease-in-out infinite;
+  }
+
+  .luxury-corner-ornament.top-left {
+    top: 60px;
+    left: 60px;
+    border-right: none;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+  }
+
+  .luxury-corner-ornament.top-right {
+    top: 60px;
+    right: 60px;
+    border-left: none;
+    border-bottom: none;
+    border-top-right-radius: 8px;
+  }
+
+  .luxury-corner-ornament.bottom-left {
+    bottom: 60px;
+    left: 60px;
+    border-right: none;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+  }
+
+  .luxury-corner-ornament.bottom-right {
+    bottom: 60px;
+    right: 60px;
+    border-left: none;
+    border-top: none;
+    border-bottom-right-radius: 8px;
+  }
+
+  /* Vintage sophisticated animations */
+  @keyframes vintage-spin {
+    0% { 
+      transform: rotate(0deg) scale(1);
+      filter: hue-rotate(0deg);
+    }
+    50% { 
+      transform: rotate(180deg) scale(1.02);
+      filter: hue-rotate(10deg);
+    }
+    100% { 
+      transform: rotate(360deg) scale(1);
+      filter: hue-rotate(0deg);
+    }
+  }
+
+  @keyframes vintage-spin-reverse {
+    0% { 
+      transform: rotate(360deg) scale(1);
+      filter: hue-rotate(0deg);
+    }
+    50% { 
+      transform: rotate(180deg) scale(0.98);
+      filter: hue-rotate(-10deg);
+    }
+    100% { 
+      transform: rotate(0deg) scale(1);
+      filter: hue-rotate(0deg);
+    }
+  }
+
+  @keyframes vintage-gem-pulse {
+    0%, 100% { 
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+      box-shadow: 
+        0 0 25px var(--primary),
+        0 0 50px var(--primary),
+        inset 0 0 10px var(--primary-foreground);
+    }
+    25% { 
+      transform: scale(1.1) rotate(90deg);
+      opacity: 0.9;
+      box-shadow: 
+        0 0 35px var(--primary),
+        0 0 70px var(--primary),
+        inset 0 0 15px var(--primary-foreground);
+    }
+    50% { 
+      transform: scale(1.2) rotate(180deg);
+      opacity: 0.8;
+      box-shadow: 
+        0 0 45px var(--primary),
+        0 0 90px var(--primary),
+        inset 0 0 20px var(--primary-foreground);
+    }
+    75% { 
+      transform: scale(1.1) rotate(270deg);
+      opacity: 0.9;
+      box-shadow: 
+        0 0 35px var(--primary),
+        0 0 70px var(--primary),
+        inset 0 0 15px var(--primary-foreground);
+    }
+  }
+
+  @keyframes vintage-gem-sparkle {
+    0%, 100% { 
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.5);
+    }
+  }
+
+  @keyframes vintage-frame-rotate {
+    0% { 
+      transform: rotate(0deg);
+      filter: hue-rotate(0deg);
+    }
+    100% { 
+      transform: rotate(360deg);
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes vintage-border-pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.6;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes vintage-corner-pulse {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.5;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes vintage-crystal-float-1 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.7;
+    }
+    25% { 
+      transform: translateY(-12px) translateX(6px) rotate(90deg);
+      opacity: 0.9;
+    }
+    50% { 
+      transform: translateY(-6px) translateX(-4px) rotate(180deg);
+      opacity: 0.5;
+    }
+    75% { 
+      transform: translateY(-18px) translateX(10px) rotate(270deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes vintage-crystal-float-2 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.6;
+    }
+    30% { 
+      transform: translateY(-10px) translateX(-5px) rotate(108deg);
+      opacity: 0.8;
+    }
+    60% { 
+      transform: translateY(-15px) translateX(8px) rotate(216deg);
+      opacity: 0.4;
+    }
+    90% { 
+      transform: translateY(-8px) translateX(-3px) rotate(324deg);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes vintage-crystal-float-3 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.5;
+    }
+    20% { 
+      transform: translateY(-8px) translateX(4px) rotate(72deg);
+      opacity: 0.7;
+    }
+    40% { 
+      transform: translateY(-12px) translateX(-6px) rotate(144deg);
+      opacity: 0.3;
+    }
+    70% { 
+      transform: translateY(-10px) translateX(5px) rotate(252deg);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes vintage-crystal-float-4 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.6;
+    }
+    35% { 
+      transform: translateY(-9px) translateX(-4px) rotate(126deg);
+      opacity: 0.8;
+    }
+    65% { 
+      transform: translateY(-13px) translateX(6px) rotate(234deg);
+      opacity: 0.4;
+    }
+    85% { 
+      transform: translateY(-6px) translateX(-2px) rotate(342deg);
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes vintage-crystal-float-5 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.4;
+    }
+    40% { 
+      transform: translateY(-7px) translateX(3px) rotate(144deg);
+      opacity: 0.6;
+    }
+    80% { 
+      transform: translateY(-11px) translateX(-4px) rotate(288deg);
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes vintage-crystal-float-6 {
+    0%, 100% { 
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+      opacity: 0.5;
+    }
+    45% { 
+      transform: translateY(-8px) translateX(-3px) rotate(162deg);
+      opacity: 0.7;
+    }
+    90% { 
+      transform: translateY(-12px) translateX(5px) rotate(324deg);
+      opacity: 0.3;
+    }
+  }
+
+  /* Dark mode adjustments for luxury loader */
+  .dark .luxury-page-loader {
+    background: var(--bg-hero);
+  }
+
+  .dark .luxury-ring-outer {
+    border-top-color: var(--primary);
+    border-right-color: var(--primary);
+  }
+
+  .dark .luxury-ring-middle {
+    border-bottom-color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  .dark .luxury-ring-inner {
+    border-top-color: var(--secondary);
+  }
+
+  .dark .luxury-center-dot {
+    background: var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+  }
+
+  .dark .luxury-particle {
+    background: var(--accent);
+  }
+
+  /* Fade out animation */
+  .luxury-loader-fade-out {
+    animation: luxury-fade-out 0.8s ease-out forwards;
+  }
+
+  @keyframes luxury-fade-out {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.1);
+      visibility: hidden;
+    }
+  }
+
+  /* Minimalistic Premium Page Loader with Glassmorphism */
+  .minimal-page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  /* Glassmorphism container */
+  .minimal-loader-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px) saturate(1.1);
+    -webkit-backdrop-filter: blur(10px) saturate(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Modern glassmorphism spinner */
+  .minimal-spinner {
+    width: 50px;
+    height: 50px;
+    border: 2px solid transparent;
+    border-top: 2px solid #2a2a2a;
+    border-right: 2px solid #2a2a2a;
+    border-radius: 50%;
+    animation: minimal-spin 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    position: relative;
+    filter: drop-shadow(0 0 8px rgba(42, 42, 42, 0.5));
+  }
+
+  /* Modern inner glow effect */
+  .minimal-spinner::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 1px solid #2a2a2a;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: minimal-spin 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite reverse;
+    filter: blur(1px);
+  }
+
+  /* Modern outer ring with glassmorphism */
+  .minimal-spinner::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    right: -6px;
+    bottom: -6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: minimal-spin 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  }
+
+  /* Clean modern animation */
+  @keyframes minimal-spin {
+    0% { 
+      transform: rotate(0deg);
+    }
+    100% { 
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Fade out animation for minimal loader */
+  .minimal-loader-fade-out {
+    animation: minimal-fade-out 0.6s ease-out forwards;
+  }
+
+  @keyframes minimal-fade-out {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.95);
+      visibility: hidden;
+    }
+  }
+
+  /* Dark mode adjustments for glassmorphism loader */
+  .dark .minimal-page-loader {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px) saturate(1.2);
+    -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  }
+
+  .dark .minimal-loader-container {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .dark .minimal-spinner {
+    border-top-color: #2a2a2a;
+    border-right-color: #2a2a2a;
+    filter: drop-shadow(0 0 12px rgba(42, 42, 42, 0.7));
+  }
+
+  .dark .minimal-spinner::before {
+    border-color: #2a2a2a;
+  }
+
+  .dark .minimal-spinner::after {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Custom Cart Toast Styling */
+  .cart-toast [data-sonner-toast] {
+    background: #f5f5dc !important; /* Beige background */
+    color: #2c2c2c !important; /* Matte black text */
+    border: 1px solid #d4af37 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    font-weight: 500 !important;
+  }
+
+  .cart-toast [data-sonner-toast] [data-icon] {
+    color: #2c2c2c !important;
+  }
+
+  /* Position toast near cart icon */
+  .cart-toast {
+    position: fixed !important;
+    top: 80px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+  }
+
+  /* Responsive positioning */
+  @media (max-width: 768px) {
+    .cart-toast {
+      top: 70px !important;
+      right: 15px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cart-toast {
+      top: 65px !important;
+      right: 10px !important;
+    }
+  }
+}

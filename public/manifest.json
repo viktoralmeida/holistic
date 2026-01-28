@@ -1,0 +1,77 @@
+{
+  "name": "Salon Holistic Point - Premium Organic Wellness Experience",
+  "short_name": "Holistic Point",
+  "description": "Doświadcz idealnej harmonii luksusu i natury w naszym salonie organicznym. Odmładzaj umysł, ciało i duszę dzięki naszym premium zabiegom wellness w Warszawie, Żoliborz.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f5f5dc",
+  "theme_color": "#d4af37",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "pl",
+  "dir": "ltr",
+  "categories": ["wellness", "beauty", "health", "lifestyle"],
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/salon.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Holistic Point Spa Interior"
+    },
+    {
+      "src": "/masaze.jpg",
+      "sizes": "750x1334",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "Massage Therapy Services"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Book a spa appointment",
+      "url": "/products",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "View Services",
+      "short_name": "Services",
+      "description": "Browse our spa services",
+      "url": "/products",
+      "icons": [
+        {
+          "src": "/logo.jpg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

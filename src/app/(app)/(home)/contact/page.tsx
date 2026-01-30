@@ -12,9 +12,7 @@ import {
   Building,
   Navigation,
   Star,
-  Calendar,
-  Users,
-  Award
+ 
 } from "lucide-react";
 import { Suspense, lazy } from "react";
 import Link from "next/link";
@@ -80,20 +78,8 @@ export default function ContactPage() {
 
   // Quick action buttons
   const quickActions = [
-    {
-      title: "Umów wizytę online",
-      description: "Szybka rezerwacja przez Booksy",
-      icon: <Calendar className="w-6 h-6" />,
-      href: "https://holisticpoint.booksy.com",
-      primary: true
-    },
-    {
-      title: "Zadzwoń do salonu",
-      description: "Rezerwacja zabiegów",
-      icon: <Phone className="w-6 h-6" />,
-      href: `tel:${criticalContact.salonPhone}`,
-      primary: false
-    },
+ 
+ 
     {
       title: "HEAD SPA Sprzedaż",
       description: "Urządzenia i szkolenia",
@@ -103,14 +89,7 @@ export default function ContactPage() {
     }
   ];
 
-  // Services offered
-  const services = [
-    { name: "HEAD SPA", description: "Profesjonalne urządzenia i szkolenia", icon: <Users className="w-5 h-5" /> },
-    { name: "Zabiegi organiczne", description: "Naturalne kosmetyki i terapie", icon: <Award className="w-5 h-5" /> },
-    { name: "Masaże terapeutyczne", description: "Relaksacja i regeneracja", icon: <Star className="w-5 h-5" /> },
-    { name: "Zabiegi na twarz", description: "Pielęgnacja i odmładzanie", icon: <Building className="w-5 h-5" /> },
-    { name: "Aromaterapia", description: "Terapia zapachami", icon: <MessageCircle className="w-5 h-5" /> }
-  ];
+  
 
   return (
     <div className="min-h-screen bg-background">
@@ -135,78 +114,72 @@ export default function ContactPage() {
             </p>
           </div>
           
-          {/* Critical Contact Info - Prominently Displayed */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="text-center">
-              <div className="flex justify-center mb-3">
-                <Phone className="w-8 h-8" />
+          {/* Critical Contact Info - 1 line on desktop, stacked on mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 items-stretch">
+            {/* 1. HEAD SPA Sprzedaż – phone */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 p-4 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 min-h-[120px] sm:min-h-0">
+              <Phone className="w-8 h-8 shrink-0 text-primary-foreground" />
+              <div className="text-center sm:text-left">
+                <h3 className="text-base font-bold mb-0.5">HEAD SPA Sprzedaż</h3>
+                <a href={`tel:${criticalContact.headSpaPhone}`} className="text-lg font-semibold hover:underline block mb-0.5">
+                  {criticalContact.headSpaPhone}
+                </a>
+                <p className="text-sm opacity-80">Urządzenia i szkolenia</p>
               </div>
-              <h3 className="text-lg font-bold mb-2">Salon Holistic Point</h3>
-              <p className="text-xl font-semibold mb-1">{criticalContact.salonPhone}</p>
-              <p className="text-sm opacity-80">Rezerwacja zabiegów</p>
             </div>
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-3">
-                <Phone className="w-8 h-8" />
+
+            {/* 2. Email */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 p-4 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 min-h-[120px] sm:min-h-0">
+              <Mail className="w-8 h-8 shrink-0 text-primary-foreground" />
+              <div className="text-center sm:text-left min-w-0">
+                <h3 className="text-base font-bold mb-0.5">Email</h3>
+                <a href={`mailto:${criticalContact.email}`} className="text-base font-semibold break-all hover:underline block mb-0.5">
+                  {criticalContact.email}
+                </a>
+                <p className="text-sm opacity-80">Odpowiadamy w 24h</p>
               </div>
-              <h3 className="text-lg font-bold mb-2">HEAD SPA Sprzedaż</h3>
-              <p className="text-xl font-semibold mb-1">{criticalContact.headSpaPhone}</p>
-              <p className="text-sm opacity-80">Urządzenia i szkolenia</p>
             </div>
-            
-            <div className="text-center">
-              <div className="flex justify-center mb-3">
-                <Mail className="w-8 h-8" />
-              </div>
-              <h3 className="text-lg font-bold mb-2">Email</h3>
-              <p className="text-lg font-semibold mb-1 break-all">{criticalContact.email}</p>
-              <p className="text-sm opacity-80">Odpowiadamy w 24h</p>
-            </div>
-          </div>
-          
-          {/* Quick Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            {/* 3. HEAD SPA Sprzedaż – call button */}
             {quickActions.map((action, index) => (
-              <Button
-                key={index}
-                size="lg"
-                className={`h-16 px-8 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group ${
-                  action.primary 
-                    ? 'text-white hover:opacity-90 border-2 border-[#b19681]' 
-                    : 'bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 border-2 border-[#b19681]'
-                }`}
-                style={action.primary ? { backgroundColor: '#43a6af' } : {}}
-                asChild
-              >
-                <Link href={action.href} target={action.href.startsWith('http') ? '_blank' : undefined}>
-                  <div className="flex items-center gap-4">
-                    {action.primary ? (
-                      <div className="p-2   rounded-full border border-white/30">
-                        <Image 
-                          src="/booksyimg.jpeg"
-                          alt="Booksy"
-                          width={32}
-                          height={32}
-                          className="w-8 h-8"
-                          loading="lazy"
-                        />
-                      </div>
-                    ) : (
-                      <div className="  rounded-full border border-primary-foreground/20">
-                        <div className="w-8 h-8 flex items-center justify-center">
-                          {action.icon}
+              <div key={index} className="flex items-center justify-center p-2 sm:p-0">
+                <Button
+                  size="lg"
+                  className={`h-full min-h-[120px] sm:min-h-14 w-full sm:w-auto px-6 font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group ${
+                    action.primary
+                      ? "text-white hover:opacity-90 border-2 border-[#b19681]"
+                      : "bg-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/30 border-2 border-[#b19681]"
+                  }`}
+                  style={action.primary ? { backgroundColor: "#43a6af" } : {}}
+                  asChild
+                >
+                  <Link href={action.href} target={action.href.startsWith("http") ? "_blank" : undefined}>
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      {action.primary ? (
+                        <div className="p-2 rounded-full border border-white/30">
+                          <Image
+                            src="/booksyimg.jpeg"
+                            alt="Booksy"
+                            width={32}
+                            height={32}
+                            className="w-8 h-8"
+                            loading="lazy"
+                          />
                         </div>
+                      ) : (
+                        <div className="rounded-full border border-primary-foreground/20">
+                          <div className="w-8 h-8 flex items-center justify-center">{action.icon}</div>
+                        </div>
+                      )}
+                      <div className="text-left">
+                        <div className="font-bold text-base sm:text-lg">{action.title}</div>
+                        <div className="text-sm opacity-80">{action.description}</div>
                       </div>
-                    )}
-                    <div className="text-left">
-                      <div className="font-bold text-lg">{action.title}</div>
-                      <div className="text-sm opacity-80">{action.description}</div>
+                      <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform shrink-0" />
                     </div>
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </Link>
-              </Button>
+                  </Link>
+                </Button>
+              </div>
             ))}
           </div>
         </div>
@@ -288,53 +261,24 @@ export default function ContactPage() {
 
       {/* Services & Contact Form Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-background">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-7xl mx-auto flex flex-col items-center">
+          {/* Contact Form - centered, larger width */}
+          <div className="w-full max-w-2xl lg:max-w-3xl">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6 flex items-center justify-center gap-3">
+              <MessageCircle className="w-8 h-8 lg:w-10 lg:h-10 text-primary" />
+              Napisz do nas
+            </h2>
             
-            {/* Services */}
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <Building className="w-8 h-8 text-primary" />
-                Nasze usługi
-              </h2>
-              
-              <Card className="bg-card border-2 border-[#b19681] shadow-lg">
-                <CardContent className="p-6">
-                  <div className="grid grid-cols-1 gap-4">
-                    {services.map((service, index) => (
-                      <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-muted/30 hover:bg-primary/10 transition-colors group">
-                        <div className="text-primary group-hover:scale-110 transition-transform mt-1">
-                          {service.icon}
-                        </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-foreground mb-1">{service.name}</h3>
-                          <p className="text-muted-foreground">{service.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-3">
-                <MessageCircle className="w-8 h-8 text-primary" />
-                Napisz do nas
-              </h2>
-              
-              <Card className="bg-card border-2 border-[#b19681] shadow-lg">
-                <CardContent className="p-6">
-                  <p className="text-muted-foreground mb-6">
-                    Masz pytania dotyczące zabiegów spa, HEAD SPA, szkoleń lub chcesz umówić wizytę?
-                  </p>
-                  <Suspense fallback={<ContactFormSkeleton />}>
-                    <ContactFormLazy />
-                  </Suspense>
-                </CardContent>
-              </Card>
-            </div>
+            <Card className="bg-card border-2 border-[#b19681] shadow-lg">
+              <CardContent className="p-8 sm:p-10 lg:p-12">
+                <p className="text-muted-foreground mb-8 text-base lg:text-lg">
+                  Masz pytania dotyczące zabiegów spa, HEAD SPA, szkoleń lub chcesz umówić wizytę?
+                </p>
+                <Suspense fallback={<ContactFormSkeleton />}>
+                  <ContactFormLazy />
+                </Suspense>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -358,26 +302,9 @@ export default function ContactPage() {
                       Bądź na bieżąco z naszymi najnowszymi usługami i promocjami
                     </p>
                     <div className="flex gap-4 justify-center">
+     
                       <Link 
-                        href="https://facebook.com/holisticpoint" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 hover:scale-105 group border border-[#b19681]"
-                      >
-                        <Image 
-                          src="/facebook.png"
-                          alt="Facebook"
-                          width={24}
-                          height={24}
-                          className="w-6 h-6"
-                          loading="lazy"
-                        />
-                        <span className="text-base font-medium text-foreground group-hover:text-primary transition-colors">
-                          Facebook
-                        </span>
-                      </Link>
-                      <Link 
-                        href="https://instagram.com/holisticpoint" 
+                        href="https://www.instagram.com/headspa_holistic.point" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-primary/10 transition-all duration-300 hover:scale-105 group border border-[#b19681]"

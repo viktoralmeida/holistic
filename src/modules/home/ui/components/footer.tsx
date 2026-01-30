@@ -22,13 +22,7 @@ const poppins = Poppins({
 })
 
 const socialLinks = [
-  { 
-    icon: "facebook", 
-    href: "https://www.instagram.com/headspa_holistic.point", 
-    label: "Facebook",
-    src: "/facebook.png",
-    alt: "Facebook"
-  },
+ 
   { 
     icon: "instagram", 
     href: "https://www.instagram.com/headspa_holistic.point", 
@@ -109,7 +103,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-foreground flex-shrink-0" />
-                <span className="font-medium">+48 123 456 789</span>
+                <span className="font-medium">+48 570 111 791</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-foreground flex-shrink-0" />

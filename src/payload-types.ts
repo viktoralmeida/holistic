@@ -200,14 +200,30 @@ export interface Product {
     id?: string | null;
   }[];
   /**
-   * Product characteristics and features
+   * Advanced product description: add paragraphs, H2 headings, and bullet lists. Order blocks as you want them to appear.
    */
   characteristics?:
     | {
         /**
-         * Characteristic text
+         * Type of content block
          */
-        text: string;
+        blockType: 'paragraph' | 'heading' | 'list';
+        /**
+         * Paragraph text or heading text
+         */
+        text?: string | null;
+        /**
+         * List items (each shown with a checkmark on the product page)
+         */
+        items?:
+          | {
+              /**
+               * List item text
+               */
+              item: string;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -393,7 +409,14 @@ export interface ProductsSelect<T extends boolean = true> {
   characteristics?:
     | T
     | {
+        blockType?: T;
         text?: T;
+        items?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
         id?: T;
       };
   refundPolicy?: T;

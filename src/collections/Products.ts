@@ -135,25 +135,58 @@ export const Products: CollectionConfig = {
             name: "characteristics",
             type: "array",
             admin: {
-                description: "Product characteristics and features",
+                description: "Advanced product description: add paragraphs, H2 headings, and bullet lists. Order blocks as you want them to appear.",
+            },
+            labels: {
+                singular: "Block",
+                plural: "Blocks",
             },
             fields: [
                 {
-                    name: "text",
-                    type: "text",
+                    name: "blockType",
+                    type: "select",
                     required: true,
+                    defaultValue: "paragraph",
+                    options: [
+                        { label: "Paragraph", value: "paragraph" },
+                        { label: "Heading (H2)", value: "heading" },
+                        { label: "List", value: "list" },
+                    ],
                     admin: {
-                        description: "Characteristic text",
+                        description: "Type of content block",
                     },
-                    validate: (value: string | null | undefined) => {
-                        if (!value || value.trim() === "") {
-                            return "Characteristic text is required";
-                        }
-                        if (value.length > 200) {
-                            return "Characteristic text must be less than 200 characters";
-                        }
-                        return true;
+                },
+                {
+                    name: "text",
+                    type: "textarea",
+                    admin: {
+                        description: "Paragraph text or heading text",
+                        condition: (_data: unknown, siblingData: { blockType?: string }) =>
+                            siblingData?.blockType === "paragraph" || siblingData?.blockType === "heading",
                     },
+                },
+                {
+                    name: "items",
+                    type: "array",
+                    admin: {
+                        description: "List items (each shown with a checkmark on the product page)",
+                        condition: (_data: unknown, siblingData: { blockType?: string }) =>
+                            siblingData?.blockType === "list",
+                    },
+                    labels: {
+                        singular: "Item",
+                        plural: "Items",
+                    },
+                    fields: [
+                        {
+                            name: "item",
+                            type: "text",
+                            required: true,
+                            admin: {
+                                description: "List item text",
+                            },
+                        },
+                    ],
                 },
             ],
         },

@@ -56,15 +56,15 @@ export function ProductImageCarousel({
   if (!images || images.length === 0) {
     return (
       <div className={cn(
-        "relative aspect-square rounded-sm overflow-hidden  border-muted-foreground/20 bg-gradient-to-br from-muted/50 to-muted/30",
+        "relative aspect-square rounded-sm overflow-hidden border border-[#b19681]/30 dark:border-[#4a4039] bg-[#f5f0e8] dark:bg-[#2d2521]",
         "flex items-center justify-center",
         className
       )}>
         <div className="text-center space-y-2">
-          <div className="w-16 h-16 mx-auto bg-muted-foreground/10 rounded-sm flex items-center justify-center">
-            <Circle className="h-8 w-8 text-muted-foreground/40" />
+          <div className="w-16 h-16 mx-auto bg-[#b19681]/10 dark:bg-white/10 rounded-sm flex items-center justify-center">
+            <Circle className="h-8 w-8 text-[#b19681]/50 dark:text-white/40" />
           </div>
-          <span className="text-muted-foreground text-lg font-medium">No images available</span>
+          <span className="text-[#5a4a3a] dark:text-white/70 text-lg font-medium">No images available</span>
         </div>
       </div>
     )
@@ -75,11 +75,11 @@ export function ProductImageCarousel({
     if (!imageUrl) {
       return (
         <div className={cn(
-          "relative aspect-square rounded-sm overflow-hidden  shadow-lg bg-gradient-to-br from-muted/30 to-muted/50",
+          "relative aspect-square rounded-sm overflow-hidden border border-transparent dark:border-[#4a4039] bg-[#f5f0e8] dark:bg-[#2d2521]",
           "flex items-center justify-center",
           className
         )}>
-          <div className="text-muted-foreground text-sm">No image available</div>
+          <div className="text-[#5a4a3a] dark:text-white/70 text-sm">No image available</div>
         </div>
       );
     }
@@ -87,7 +87,7 @@ export function ProductImageCarousel({
     return (
       <div 
         className={cn(
-          "relative aspect-square rounded-sm overflow-hidden bg-muted/10 group hover-zoom-container",
+          "relative aspect-square rounded-sm overflow-hidden bg-[#f5f0e8]/50 dark:bg-muted/20 group hover-zoom-container",
           className
         )}
         onMouseMove={handleMouseMove}
@@ -113,7 +113,7 @@ export function ProductImageCarousel({
     <div className={cn("relative group space-y-4", className)}>
       {/* Main Image Container */}
       <div 
-        className="relative aspect-square rounded-sm overflow-hidden bg-muted/10 group/main-image hover-zoom-container"
+        className="relative aspect-square rounded-sm overflow-hidden bg-[#f5f0e8]/50 dark:bg-[#2d2521] group/main-image hover-zoom-container"
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -136,55 +136,54 @@ export function ProductImageCarousel({
               priority
             />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-muted/30 to-muted/50 flex items-center justify-center">
-              <div className="text-muted-foreground text-sm">No image available</div>
+            <div className="w-full h-full bg-[#f5f0e8] flex items-center justify-center">
+              <div className="text-[#5a4a3a] text-sm">No image available</div>
             </div>
           )}
           
         </div>
 
-        {/* Top Controls */}
+        {/* Top Controls - spa style */}
         {images.length > 1 && (
           <div className="absolute top-3 right-3 opacity-0 group-hover/main-image:opacity-100 transition-all duration-300">
-            <div className="bg-black/80 text-white rounded-sm px-2 py-1 text-xs font-medium">
+            <div className="bg-[#b19681]/90 dark:bg-primary/90 text-white rounded-sm px-2.5 py-1 text-xs font-medium">
               {currentIndex + 1} / {images.length}
             </div>
           </div>
         )}
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - spa style */}
         {images.length > 1 && (
           <>
             <button
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white rounded-sm w-8 h-8 opacity-0 group-hover/main-image:opacity-100 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-0"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#b19681]/90 hover:bg-[#b19681] text-white rounded-sm w-9 h-9 opacity-0 group-hover/main-image:opacity-100 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-0"
               onClick={() => goToImage((currentIndex - 1 + images.length) % images.length)}
               disabled={isTransitioning}
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white rounded-sm w-8 h-8 opacity-0 group-hover/main-image:opacity-100 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-0"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#b19681]/90 dark:bg-primary/90 hover:bg-[#b19681] dark:hover:bg-primary text-white rounded-sm w-9 h-9 opacity-0 group-hover/main-image:opacity-100 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-0"
               onClick={() => goToImage((currentIndex + 1) % images.length)}
               disabled={isTransitioning}
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-5 w-5" />
             </button>
           </>
         )}
       </div>
 
-      {/* Minimalistic Thumbnail Slider */}
+      {/* Thumbnail slider - spa style */}
       {showThumbnails && images.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide pt-1">
           {images.map((image, index) => (
             <button
               key={index}
               className={cn(
-                "relative flex-shrink-0 w-20 h-20 rounded-sm overflow-hidden transition-all duration-200",
-                "hover:opacity-80 focus:outline-none focus:ring-0",
+                "relative flex-shrink-0 w-20 h-20 rounded-sm overflow-hidden transition-all duration-200 border-2 focus:outline-none focus:ring-0",
                 index === currentIndex 
-                  ? "opacity-100" 
-                  : "opacity-60 hover:opacity-80"
+                  ? "border-[#b19681] dark:border-primary opacity-100 ring-1 ring-[#b19681]/30 dark:ring-primary/30" 
+                  : "border-transparent opacity-60 hover:opacity-90 hover:border-[#b19681]/50 dark:hover:border-primary/50"
               )}
               onClick={() => goToImage(index)}
               disabled={isTransitioning}
@@ -197,8 +196,8 @@ export function ProductImageCarousel({
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-muted/40 flex items-center justify-center">
-                  <div className="text-muted-foreground text-xs">No image</div>
+                <div className="w-full h-full bg-[#f5f0e8] dark:bg-[#2d2521] flex items-center justify-center">
+                  <div className="text-[#5a4a3a] dark:text-white/70 text-xs">No image</div>
                 </div>
               )}
             </button>

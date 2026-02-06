@@ -20,9 +20,12 @@ export const productsRouter = createTRPCRouter({
            alt: z.string().optional(),
            isPrimary: z.boolean().optional()
          })).min(1, "At least one image is required"),
-         characteristics: z.array(z.object({
-           text: z.string().min(1, "Characteristic text is required").max(200, "Characteristic text must be less than 200 characters")
-         })).optional(),
+         characteristics: z.array(z.union([
+           z.object({ blockType: z.literal("paragraph"), text: z.string().min(1) }),
+           z.object({ blockType: z.literal("heading"), text: z.string().min(1) }),
+           z.object({ blockType: z.literal("list"), items: z.array(z.object({ item: z.string().min(1) })).optional() }),
+           z.object({ text: z.string().min(1) }), // legacy
+         ])).optional(),
         refundPolicy: z.enum(["30-day", "14-day", "7-day", "3-day", "1-day", "no-refunds"]).default("30-day"),
         content: z.string().optional(),
         status: z.enum(["draft", "published", "archived"]).default("draft")

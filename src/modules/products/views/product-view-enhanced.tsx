@@ -9,18 +9,12 @@ import {
   AlertCircle, 
   MessageSquare, 
   Star, 
-  Truck, 
-  Award, 
   ChevronRight,
-  Clock,
-  Package,
   CheckCircle,
   Share2,
   MessageCircle,
   Sparkles,
-  ShieldCheck,
-  RefreshCw,
-  Headphones,
+  ListChecks,
   Loader2,
   ShoppingCart
 } from "lucide-react";
@@ -157,18 +151,11 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
   };
 
 
-  // Trust indicators
-  const trustIndicators = [
-    { icon: ShieldCheck, text: "Bezpieczne płatności", color: "text-green-600" },
-    { icon: Truck, text: "Szybka dostawa 24h", color: "text-blue-600" },
-    { icon: RefreshCw, text: "30 dni na zwrot", color: "text-purple-600" },
-    { icon: Headphones, text: "Wsparcie 24/7", color: "text-orange-600" },
-    { icon: Award, text: "Gwarancja jakości", color: "text-yellow-600" },
-  ];
+ 
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section with Breadcrumb */}
+      {/* Hero Section with Breadcrumb - golden border same as site header/navbar */}
       <div className="bg-card border-b border-[#b19681]">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 py-4">
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
@@ -183,128 +170,21 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-           {/* Left Column - Product Images and Details */}
-           <div className="space-y-6">
-             <ProductImageCarousel 
-               images={data.images || []}
-               showThumbnails={true}
-               className="w-full"
-             />
-             
-             {/* Product Details Tabs - Moved to Left Side */}
-             <div className="bg-card rounded-sm shadow-xl border border-border p-6">
-               <Tabs defaultValue="characteristics" className="w-full">
-                 <div className="flex justify-center">
-                   <TabsList className="inline-flex gap-3 bg-transparent p-0 border-0">
-                     <TabsTrigger 
-                       value="characteristics" 
-                       className="!px-6 !py-2.5 !text-sm !font-semibold !text-gray-800 !border !border-gray-300 !transition-colors !border-transparent hover:!bg-gray-100 data-[state=active]:!bg-gray-100 data-[state=active]:!text-gray-800 data-[state=active]:!border-gray-300"
-                       style={{ backgroundColor: "#fdfbf7" }}
-                     >
-                       Charakterystyka
-                     </TabsTrigger>
-                     <TabsTrigger 
-                       value="reviews" 
-                       className="!px-6 !py-2.5 !text-sm !font-semibold !text-gray-800 !border !border-gray-300 !transition-colors !border-transparent hover:!bg-gray-100 data-[state=active]:!bg-gray-100 data-[state=active]:!text-gray-800 data-[state=active]:!border-gray-300"
-                       style={{ backgroundColor: "#fdfbf7" }}
-                     >
-                       Recenzje
-                     </TabsTrigger>
-                   </TabsList>
-                 </div>
-
-                 <TabsContent value="characteristics" className="mt-0">
-                   {data.characteristics && data.characteristics.length > 0 ? (
-                     <div className="space-y-1">
-                       {data.characteristics.map((characteristic, index) => (
-                         <div key={index} className="group relative">
-                           <div className="flex items-start gap-2 p-4 rounded-sm border border-border/40 hover:border-border hover:bg-muted/20 transition-all duration-200 ease-in-out">
-                             <div className="flex-shrink-0 w-1.5 h-1.5 bg-primary rounded-sm mt-2 opacity-60 group-hover:opacity-100 transition-opacity duration-200"></div>
-                             <p className="text-foreground leading-relaxed text-sm font-normal flex-1">
-                               {characteristic.text}
-                             </p>
-                           </div>
-                         </div>
-                       ))}
-                     </div>
-                   ) : (
-                     <div className="text-center py-12">
-                       <div className="w-16 h-16 mx-auto mb-4 bg-muted/50 rounded-sm flex items-center justify-center">
-                         <Sparkles className="h-8 w-8 text-muted-foreground/60" />
-                       </div>
-                       <h3 className="text-lg font-semibold text-foreground mb-2">Brak charakterystyk</h3>
-                       <p className="text-sm text-muted-foreground max-w-sm mx-auto">
-                         Charakterystyki produktu nie zostały jeszcze dodane przez sprzedawcę.
-                       </p>
-                     </div>
-                   )}
-                 </TabsContent>
-
-                 <TabsContent value="reviews" className="mt-0">
-                   {reviewsQuery.isLoading ? (
-                     <div className="text-center py-8">
-                       <div className="w-12 h-12 mx-auto mb-3 bg-muted rounded-md flex items-center justify-center animate-pulse">
-                         <MessageCircle className="h-6 w-6 text-muted-foreground" />
-                       </div>
-                       <p className="text-xs text-muted-foreground">Ładowanie recenzji...</p>
-                     </div>
-                   ) : Array.isArray(reviewsQuery.data) && reviewsQuery.data.length === 0 ? (
-                     <div className="text-center py-8">
-                       <div className="w-12 h-12 mx-auto mb-3 bg-muted rounded-md flex items-center justify-center">
-                         <MessageCircle className="h-6 w-6 text-muted-foreground" />
-                       </div>
-                       <h3 className="text-base font-semibold text-foreground mb-1">Brak recenzji</h3>
-                       <p className="text-xs text-muted-foreground">Bądź pierwszym, który zostawi recenzję dla tego produktu!</p>
-                     </div>
-                   ) : (
-                     <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin">
-                       {Array.isArray(reviewsQuery.data) && reviewsQuery.data.map((review) => (
-                         <div key={review.id} className="p-4 rounded-md bg-muted/30 border border-border/50 hover:bg-muted/50 hover:border-primary/20 transition-all duration-200">
-                           <div className="flex items-start gap-3">
-                             <Avatar className="w-8 h-8 border border-border">
-                               <AvatarFallback className="text-xs font-bold bg-gradient-to-br from-primary to-accent text-primary-foreground">
-                                 {getInitial(review.user)}
-                               </AvatarFallback>
-                             </Avatar>
-                             <div className="flex-1 min-w-0">
-                               <div className="flex items-center justify-between mb-2">
-                                 <div>
-                                   <h4 className="font-semibold text-foreground text-xs">
-                                     {typeof review.user === 'object' ? (review.user.username || "Anonimowy") : "Anonimowy"}
-                                   </h4>
-                                   <p className="text-xs text-muted-foreground">
-                                     {new Date(review.createdAt).toLocaleDateString('pl-PL', {
-                                       year: 'numeric',
-                                       month: 'short',
-                                       day: 'numeric'
-                                     })}
-                                   </p>
-                                 </div>
-                                 <div className="flex items-center gap-2">
-                                   <StarRating rating={review.rating} iconClassName="size-3" />
-                                   <Badge variant="secondary" className="bg-muted text-foreground border-border text-xs px-2 py-0.5">
-                                     {review.rating}/5
-                                   </Badge>
-                                 </div>
-                               </div>
-                               <p className="text-foreground leading-relaxed text-xs">
-                                 {review.description}
-                               </p>
-                             </div>
-                           </div>
-                         </div>
-                       ))}
-                     </div>
-                   )}
-                 </TabsContent>
-               </Tabs>
+           {/* Left Column - Product image slider */}
+           <div className="space-y-4">
+             <div className="rounded-sm border border-[#b19681] dark:border-[#b19681] bg-[#f5f0e8] dark:bg-[#2d2521] p-3 overflow-hidden">
+               <ProductImageCarousel 
+                 images={data.images || []}
+                 showThumbnails={true}
+                 className="w-full"
+               />
              </div>
            </div>
 
-          {/* Right Column - Product Info */}
+          {/* Right Column - Product Info - golden border same as header */}
           <div className="space-y-6">
             {/* Product Header */}
-            <div className="bg-card rounded-md shadow-xl border border-border p-4 sm:p-8">
+            <div className="bg-card rounded-sm border border-[#b19681] p-4 sm:p-8">
               <div className="mb-6">
                 {/* Desktop Badge Layout */}
                 <div className="hidden sm:flex items-center gap-3 mb-4">
@@ -355,12 +235,7 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
 
               {/* Trust Indicators */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-8">
-                {trustIndicators.map((indicator, index) => (
-                  <div key={index} className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-md bg-muted border border-border">
-                    <indicator.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
-                    <span className="text-xs sm:text-sm font-medium text-foreground">{indicator.text}</span>
-                  </div>
-                ))}
+ 
               </div>
 
                {/* Action Buttons */}
@@ -370,11 +245,10 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                   <Button
                     variant="elevated"
                     className={cn(
-                      "flex-1 h-10 text-sm font-semibold text-gray-800 border border-gray-300",
-                      "px-4 transition-all duration-200",
-                      isCopied ? "bg-green-100" : "hover:bg-gray-100"
+                      "flex-1 h-10 text-sm font-semibold border border-[#b19681] rounded-sm",
+                      "px-4 transition-all duration-200 bg-[#f5f0e8] text-[#5a4a3a]",
+                      isCopied ? "bg-green-50 border-green-600/50 text-green-800" : "hover:bg-[#ebe5dc]"
                     )}
-                    style={{ backgroundColor: isCopied ? "#f0f9f0" : "#fdfbf7" }}
                     onClick={() => {
                       setIsCopied(true);
                       navigator.clipboard.writeText(window.location.href);
@@ -454,7 +328,7 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                           <Button 
                             onClick={handleReviewSubmit}
                             disabled={!session.data?.user || createReview.isPending || updateReview.isPending}
-                            className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                            className="flex-1 border border-[#b19681] rounded-sm bg-[#f5f0e8] text-[#5a4a3a] hover:bg-[#ebe5dc] font-semibold"
                             size="lg"
                           >
                             {(createReview.isPending || updateReview.isPending)
@@ -479,11 +353,9 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                    <Button
                      variant="elevated"
                      className={cn(
-                       "w-full h-10 text-sm font-semibold text-gray-800 border border-gray-300",
-                       "px-4 transition-all duration-200",
-                       isCopied ? "bg-green-100" : "hover:bg-gray-100"
+                       "w-full h-10 text-sm font-semibold border border-[#b19681] rounded-sm px-4 transition-all duration-200 bg-[#f5f0e8] text-[#5a4a3a]",
+                       isCopied ? "bg-green-50 border-green-600/50 text-green-800" : "hover:bg-[#ebe5dc]"
                      )}
-                     style={{ backgroundColor: isCopied ? "#f0f9f0" : "#fdfbf7" }}
                      onClick={() => {
                        setIsCopied(true);
                        navigator.clipboard.writeText(window.location.href);
@@ -502,8 +374,7 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                      <DialogTrigger asChild>
                        <Button 
                          variant="elevated"
-                         className="w-full h-10 text-sm font-semibold text-gray-800 border border-gray-300 hover:bg-gray-100 px-4 transition-all duration-200" 
-                         style={{ backgroundColor: "#fdfbf7" }}
+                         className="w-full h-10 text-sm font-semibold border border-[#b19681] rounded-sm bg-[#f5f0e8] text-foreground hover:bg-[#ebe5dc] dark:hover:bg-muted/60 px-4 transition-all duration-200"
                          onClick={openReviewDialog}
                        >
                          <MessageSquare className="h-4 w-4 mr-2" />
@@ -560,10 +431,10 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                          </div>
                          
                          <div className="flex gap-3">
-                           <Button 
+                            <Button 
                              onClick={handleReviewSubmit}
                              disabled={!session.data?.user || createReview.isPending || updateReview.isPending}
-                             className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                             className="flex-1 border border-[#b19681] rounded-sm bg-[#f5f0e8] text-[#5a4a3a] hover:bg-[#ebe5dc] font-semibold"
                              size="lg"
                            >
                              {(createReview.isPending || updateReview.isPending)
@@ -671,28 +542,28 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
 
 
 
-            {/* Delivery Information */}
-            <div className="bg-card rounded-md shadow-xl border border-border p-8">
+            {/* Delivery Information  
+            <div className="bg-card rounded-sm border border-border p-8">
               <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
                 <Truck className="h-6 w-6 text-primary" />
                 Informacje o dostawie
               </h3>
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 rounded-md bg-muted border border-border">
+                <div className="flex items-center gap-4 p-4 rounded-sm bg-muted border border-border">
                   <Clock className="h-5 w-5 text-primary" />
                   <div>
                     <div className="font-semibold text-foreground">Szybka dostawa</div>
                     <div className="text-sm text-muted-foreground">1-2 dni robocze</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 rounded-md bg-muted border border-border">
+                <div className="flex items-center gap-4 p-4 rounded-sm bg-muted border border-border">
                   <Package className="h-5 w-5 text-primary" />
                   <div>
                     <div className="font-semibold text-foreground">Darmowa dostawa</div>
                     <div className="text-sm text-muted-foreground">Od 200 zł</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 p-4 rounded-md bg-muted border border-border">
+                <div className="flex items-center gap-4 p-4 rounded-sm bg-muted border border-border">
                   <RefreshCw className="h-5 w-5 text-primary" />
                   <div>
                     <div className="font-semibold text-foreground">Zwroty</div>
@@ -700,10 +571,148 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
+        {/* Full-width Charakterystyka / Recenzje - golden border, soft spa style */}
+        <div className="w-full mt-8">
+          <div className="bg-card rounded-sm border border-[#b19681] p-6">
+            <Tabs defaultValue="characteristics" className="w-full">
+              <div className="flex justify-center">
+                <TabsList className="inline-flex   rounded-sm      ">
+                  <TabsTrigger 
+                    value="characteristics" 
+                    className="inline-flex items-center gap-3 px-7 py-3.5 text-base font-medium text-[#5a4a3a] dark:text-muted-foreground rounded-sm border border-transparent transition-all duration-200 hover:bg-white/70 dark:hover:bg-background/60 hover:text-[#4a3d2e] dark:hover:text-foreground data-[state=active]:bg-white data-[state=active]:text-[#4a3d2e] data-[state=active]:border-[#b19681] data-[state=active]:font-semibold dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=active]:border-border"
+                  >
+                    <ListChecks className="h-5 w-5 text-[#8d9d4f] dark:text-primary shrink-0" />
+                    Charakterystyka
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="reviews" 
+                    className="inline-flex items-center gap-3 px-7 py-3.5 text-base font-medium text-[#5a4a3a] dark:text-muted-foreground rounded-sm border border-transparent transition-all duration-200 hover:bg-white/70 dark:hover:bg-background/60 hover:text-[#4a3d2e] dark:hover:text-foreground data-[state=active]:bg-white data-[state=active]:text-[#4a3d2e] data-[state=active]:border-[#b19681] data-[state=active]:font-semibold dark:data-[state=active]:bg-background dark:data-[state=active]:text-foreground dark:data-[state=active]:border-border"
+                  >
+                    <MessageCircle className="h-5 w-5 text-[#8d9d4f] dark:text-primary shrink-0" />
+                    Recenzje
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="characteristics" className="mt-6">
+                {data.characteristics && data.characteristics.length > 0 ? (
+                  <div className="space-y-4 text-base">
+                    {data.characteristics.map((block, index) => {
+                      const key = (block as { id?: string }).id ?? index;
+                      // Legacy: plain { text }
+                      if ("text" in block && !("blockType" in block)) {
+                        const legacy = block as { text: string };
+                        return (
+                          <p key={key} className="text-foreground leading-relaxed text-base">
+                            {legacy.text}
+                          </p>
+                        );
+                      }
+                      const typed = block as { blockType?: string; text?: string; items?: { item: string }[] };
+                      if (typed.blockType === "heading") {
+                        return (
+                          <h2 key={key} className="text-xl font-semibold text-foreground border-b border-border pb-2 mt-6 first:mt-0">
+                            {typed.text}
+                          </h2>
+                        );
+                      }
+                      if (typed.blockType === "list" && typed.items?.length) {
+                        return (
+                          <ul key={key} className="space-y-2 list-none pl-0">
+                            {typed.items.map((entry, i) => (
+                              <li key={entry.item ?? i} className="flex items-start gap-2.5 text-base text-foreground">
+                                <CheckCircle className="h-5 w-5 shrink-0 mt-0.5 text-green-600 dark:text-green-500" aria-hidden />
+                                <span className="leading-relaxed">{entry.item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        );
+                      }
+                      // paragraph or fallback
+                      return (
+                        <p key={key} className="text-foreground leading-relaxed text-base">
+                          {typed.text ?? ""}
+                        </p>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-[#f5f0e8] dark:bg-muted/50 rounded-sm flex items-center justify-center border border-[#b19681]/30 dark:border-border">
+                      <Sparkles className="h-8 w-8 text-[#8d9d4f] dark:text-muted-foreground" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Brak charakterystyk</h3>
+                    <p className="text-base text-muted-foreground max-w-sm mx-auto">
+                      Charakterystyki produktu nie zostały jeszcze dodane przez sprzedawcę.
+                    </p>
+                  </div>
+                )}
+              </TabsContent>
+
+              <TabsContent value="reviews" className="mt-6">
+                {reviewsQuery.isLoading ? (
+                  <div className="text-center py-8">
+                    <div className="w-12 h-12 mx-auto mb-3 bg-muted rounded-sm flex items-center justify-center animate-pulse">
+                      <MessageCircle className="h-6 w-6 text-muted-foreground" />
+                    </div>
+                    <p className="text-sm text-muted-foreground">Ładowanie recenzji...</p>
+                  </div>
+                ) : Array.isArray(reviewsQuery.data) && reviewsQuery.data.length === 0 ? (
+                  <div className="text-center py-8">
+                    <div className="w-12 h-12 mx-auto mb-3 bg-muted rounded-sm flex items-center justify-center">
+                      <MessageCircle className="h-6 w-6 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Brak recenzji</h3>
+                    <p className="text-base text-muted-foreground">Bądź pierwszym, który zostawi recenzję dla tego produktu!</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3 max-h-96 overflow-y-auto scrollbar-thin">
+                    {Array.isArray(reviewsQuery.data) && reviewsQuery.data.map((review) => (
+                      <div key={review.id} className="p-4 rounded-sm bg-[#f5f0e8]/50 dark:bg-muted/30 border border-[#b19681]/30 dark:border-border hover:border-[#b19681]/60 dark:hover:border-primary/20 transition-all duration-200">
+                        <div className="flex items-start gap-3">
+                          <Avatar className="w-8 h-8 border border-border">
+                            <AvatarFallback className="text-xs font-bold bg-gradient-to-br from-primary to-accent text-primary-foreground">
+                              {getInitial(review.user)}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center justify-between mb-2">
+                              <div>
+                                <h4 className="font-semibold text-foreground text-sm">
+                                  {typeof review.user === 'object' ? (review.user.username || "Anonimowy") : "Anonimowy"}
+                                </h4>
+                                <p className="text-sm text-muted-foreground">
+                                  {new Date(review.createdAt).toLocaleDateString('pl-PL', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric'
+                                  })}
+                                </p>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <StarRating rating={review.rating} iconClassName="size-3" />
+                                <Badge variant="secondary" className="bg-muted text-foreground border-border text-xs px-2 py-0.5">
+                                  {review.rating}/5
+                                </Badge>
+                              </div>
+                            </div>
+                            <p className="text-foreground leading-relaxed text-sm">
+                              {review.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
 
       </div>
     </div>

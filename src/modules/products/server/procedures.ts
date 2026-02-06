@@ -33,6 +33,16 @@ export const productsRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       try {
+        // Normalize characteristics: legacy { text } -> { blockType: 'paragraph', text } for DB
+        const characteristics = (input.characteristics || []).map((block) => {
+          if ("blockType" in block && block.blockType) {
+            return block.blockType === "list"
+              ? { blockType: "list" as const, items: block.items ?? [] }
+              : { blockType: block.blockType, text: block.text };
+          }
+          return { blockType: "paragraph" as const, text: (block as { text: string }).text };
+        });
+
         const product = await ctx.db.create({
           collection: "products",
                     data: {
@@ -42,7 +52,7 @@ export const productsRouter = createTRPCRouter({
              productType: input.productType || "other-products",
              tags: input.tags || [],
              images: input.images,
-             characteristics: input.characteristics || [],
+             characteristics,
             refundPolicy: input.refundPolicy,
             content: input.content || "",
             status: input.status

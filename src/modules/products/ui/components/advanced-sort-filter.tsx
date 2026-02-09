@@ -76,7 +76,7 @@ export const AdvancedSortFilter = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="h-10 px-3 text-muted-foreground hover:text-foreground"
+            className="h-10   text-muted-foreground hover:text-foreground"
             onClick={clearAllFilters}
           >
             <X className="w-4 h-4 mr-1" />
@@ -85,7 +85,7 @@ export const AdvancedSortFilter = () => {
         )}
 
         {/* Sort Dropdown */}
-        <div className="w-auto min-w-[200px]">
+        <div className="w-auto">
           <Select value={filters.sort || "newest"} onValueChange={handleSortChange}>
             <SelectTrigger className="h-10 bg-card border border-[#b19681] focus:border-primary focus:ring-1 focus:ring-primary/20 text-foreground shadow-sm">
               <div className="flex items-center space-x-2">

@@ -15,8 +15,7 @@ import {
   MessageCircle,
   Sparkles,
   ListChecks,
-  Loader2,
-  ShoppingCart
+ 
 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -30,8 +29,11 @@ import { useMutation } from "@tanstack/react-query";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ProductImageCarousel } from "@/components/product-image-carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useCartStore } from "@/modules/checkout/store/use-cart-store";
-import { QuantitySelector } from "@/components/ui/quantity-selector";
+// import { useCartStore } from "@/modules/checkout/store/use-cart-store";
+// import { QuantitySelector } from "@/components/ui/quantity-selector";
+import { Suspense, lazy } from "react";
+
+const ContactFormLazy = lazy(() => import("@/components/contact-form-new").then((m) => ({ default: m.ContactFormNew })));
 
 interface ProductViewProps {
   productId: string;
@@ -49,12 +51,11 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
   const [reviewRating, setReviewRating] = useState(5);
   const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false);
   const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState(1);
-  const [isAddingToCart, setIsAddingToCart] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  
-  // Cart state
-  const addProduct = useCartStore((state) => state.addProduct);
+  // Commented button functionality – quantity and add to cart state (kept for possible future use)
+  // const [quantity, setQuantity] = useState(1);
+  // const [isAddingToCart, setIsAddingToCart] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
+  // const addProduct = useCartStore((state) => state.addProduct);
 
   // Fetch all reviews for this product
   const reviewsQuery = useQuery(trpc.reviews.getAll.queryOptions({ productId }));
@@ -454,88 +455,27 @@ export const ProductViewEnhanced = ({ productId }: ProductViewProps) => {
                    </Dialog>
                  </div>
                  
-                 {/* Quantity Selector and Add to Cart */}
-                 <div className="w-full space-y-4">
-                   {/* Desktop Layout */}
+                 {/* ——— Commented button functionality: Ilość (quantity) + Dodaj do koszyka ——— */}
+                 {/* <div className="w-full space-y-4">
                    <div className="hidden sm:flex items-center justify-between">
                      <span className="text-base font-semibold text-foreground">Ilość:</span>
-                     <QuantitySelector
-                       value={quantity}
-                       onChange={setQuantity}
-                       size="lg"
-                       min={1}
-                       max={99}
-                     />
+                     <QuantitySelector value={quantity} onChange={setQuantity} size="lg" min={1} max={99} />
                    </div>
-                   
-                   {/* Mobile Layout */}
                    <div className="sm:hidden space-y-3">
                      <span className="text-sm font-semibold text-foreground block">Ilość:</span>
                      <div className="flex justify-center">
-                       <QuantitySelector
-                         value={quantity}
-                         onChange={setQuantity}
-                         size="md"
-                         min={1}
-                         max={99}
-                       />
+                       <QuantitySelector value={quantity} onChange={setQuantity} size="md" min={1} max={99} />
                      </div>
                    </div>
-                   
-                   <Button
-                     variant="elevated"
-                     className={cn(
-                       "w-full h-11 sm:h-12 text-base sm:text-lg font-medium sm:font-semibold text-white",
-                       "px-4 sm:px-6 transition-all duration-200",
-                       isSuccess ? "bg-green-600" : "bg-green-700 hover:bg-green-800"
-                     )}
-                     onClick={async () => {
-                       setIsAddingToCart(true);
-                       try {
-                         addProduct(productId, quantity);
-                         // Force immediate update by triggering a small delay
-                         await new Promise(resolve => setTimeout(resolve, 10));
-                         setIsSuccess(true);
-                         toast.success("Produkt dodany do koszyka", {
-                           style: {
-                             background: '#f5f5dc', // Beige background
-                             color: '#2c2c2c', // Matte black text
-                             border: '1px solid #d4af37',
-                             borderRadius: '8px',
-                             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-                             fontWeight: '500',
-                           },
-                           duration: 2000,
-                         });
-                       } finally {
-                         setTimeout(() => {
-                           setIsAddingToCart(false);
-                           setTimeout(() => setIsSuccess(false), 1000);
-                         }, 500);
-                       }
-                     }}
-                     disabled={isAddingToCart || isSuccess}
-                   >
-                     {isAddingToCart ? (
-                       <>
-                         <Loader2 className="h-4 w-4 sm:h-5 sm:w-5 mr-2 animate-spin" />
-                         <span className="hidden sm:inline">Dodawanie...</span>
-                         <span className="sm:hidden">Dodawanie</span>
-                       </>
-                     ) : isSuccess ? (
-                       <>
-                         <CheckIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                         <span className="hidden sm:inline">Dodano!</span>
-                         <span className="sm:hidden">Dodano</span>
-                       </>
-                     ) : (
-                       <>
-                         <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                         <span className="hidden sm:inline">Dodaj do koszyka</span>
-                         <span className="sm:hidden">Dodaj</span>
-                       </>
-                     )}
-                   </Button>
+                   <Button variant="elevated" ... >Dodaj do koszyka</Button>
+                 </div> */}
+
+                 {/* Contact form – same as /contact: Skontaktuj się z nami / Masz pytania? Chętnie pomożemy... */}
+                 <div className="w-full mt-6 space-y-4">
+       
+                   <Suspense fallback={<div className="h-48 rounded-sm border border-[#b19681] bg-muted/20 animate-pulse" />}>
+                     <ContactFormLazy />
+                   </Suspense>
                  </div>
                </div>
              </div>

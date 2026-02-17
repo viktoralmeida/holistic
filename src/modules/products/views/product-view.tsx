@@ -18,7 +18,8 @@ import {
   Award, 
   Heart, 
   ChevronDown, 
-  ChevronUp
+  ChevronUp,
+ 
 } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -35,14 +36,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ProductViewEnhanced } from './product-view-enhanced';
 
-const CartButton = dynamic(
-  () => import("../ui/components/cart-button").then(
-    (mod) => mod.CartButton,
-  ),
-  {
-    ssr: false,
-    loading: () => <Button disabled className="flex-1 bg-green-700">Dodaj do koszyka</Button>
-  }
+// Commented button functionality – Dodaj do koszyka (add to cart) component
+// const CartButton = dynamic(
+//   () => import("../ui/components/cart-button").then((mod) => mod.CartButton),
+//   { ssr: false, loading: () => <Button disabled className="flex-1 bg-green-700">Dodaj do koszyka</Button> }
+// )
+const ContactFormLazy = dynamic(
+  () => import("@/components/contact-form-new").then((m) => ({ default: m.ContactFormNew })),
+  { ssr: false, loading: () => <div className="flex-1 min-h-[200px] rounded-lg bg-muted/30 animate-pulse" /> }
 )
 
 interface ProductViewProps {
@@ -327,14 +328,14 @@ export const ProductViewOriginal = ({ productId }: ProductViewProps) => {
               </Collapsible>
             </CardContent>
           </Card>
-          {/* Action Buttons */}
+          {/* Contact form – same as /contact: Skontaktuj się z nami / Masz pytania? Chętnie pomożemy... */}
           <Card className="border-2 border-border/30 shadow-lg">
             <CardContent className="p-6">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <CartButton productId={productId} />
+              <div className="flex flex-col gap-6">
+                <div className="w-full space-y-4">
+ 
+                  <ContactFormLazy />
                 </div>
-                
                 <div className="flex gap-3">
                   <Button
                     variant="outline"

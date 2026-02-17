@@ -80,9 +80,13 @@ export function ContactFormNew({ className }: ContactFormNewProps) {
   return (
     <Card className={cn("bg-card/70 backdrop-blur-sm border border-[#b19681] shadow-xl", className)}>
       <CardHeader className="text-center">
-        <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-md flex items-center justify-center mx-auto mb-4">
-          <Mail className="w-8 h-8 text-primary" />
-        </div>
+        <a
+          href="tel:+48570111791"
+          className="inline-flex items-center gap-2 bg-gradient-to-br from-primary/20 to-accent/20 rounded-md px-4 py-3 mx-auto mb-4 text-primary font-semibold hover:opacity-90 transition-opacity"
+        >
+          <Phone className="w-5 h-5 shrink-0" />
+          +48 570 111 791
+        </a>
         <CardTitle className="text-2xl font-bold text-foreground">
           Skontaktuj się z nami
         </CardTitle>

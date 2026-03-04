@@ -107,7 +107,7 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-foreground flex-shrink-0" />
-                <span className="font-medium">info@holisticpoint.pl</span>
+                <span className="font-medium">contact@holisticpoint.pl</span>
               </div>
             </div>
           </div>

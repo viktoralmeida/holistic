@@ -102,35 +102,7 @@ export const CartButton = ({
     );
   }
 
-  return (
-    <Button
-      variant="elevated"
-      className={cn(
-        "w-full text-white",
-        isSuccess ? "bg-green-600" : "bg-green-700 hover:bg-green-800"
-      )}
-      onClick={handleAddToCart}
-      size={size}
-      disabled={isLoading || isSuccess}
-    >
-      {isLoading ? (
-        <>
-          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-          Dodawanie...
-        </>
-      ) : isSuccess ? (
-        <>
-          <CheckIcon className="h-4 w-4 mr-2" />
-          Dodano!
-        </>
-      ) : (
-        <>
-          <ShoppingCart className="h-4 w-4 mr-2" />
-          Dodaj do koszyka
-        </>
-      )}
-    </Button>
-  );
+ 
 };
 
  
